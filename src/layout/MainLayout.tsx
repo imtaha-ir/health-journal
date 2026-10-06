@@ -21,7 +21,7 @@ export default function MainLayout() {
   return (
     <Box style={{ minHeight: "100vh" }}>
       <CssBaseline />
-      <TopBar drawerWidth={drawerWidth} />
+      <TopBar drawerWidth={drawerWidth} currentDate={new Date("2026-06-16")} />
       <SideBar drawerWidth={drawerWidth} />
       <PageContainer drawerWidth={drawerWidth}>test</PageContainer>
     </Box>

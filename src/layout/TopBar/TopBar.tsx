@@ -1,10 +1,17 @@
-import { AppBar, Divider, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, Divider, Toolbar, Typography } from "@mui/material";
 
 interface TopBarProps {
   drawerWidth: number;
+  currentDate: Date;
 }
 
-export default function TopBar({ drawerWidth }: TopBarProps) {
+export default function TopBar({ drawerWidth, currentDate }: TopBarProps) {
+  const formatter = new Intl.DateTimeFormat("fa-IR", {
+    calendar: "persian",
+    weekday: "long",
+    day: "2-digit",
+    month: "long",
+  });
   return (
     <AppBar
       position="fixed"
@@ -20,9 +27,25 @@ export default function TopBar({ drawerWidth }: TopBarProps) {
       }}
     >
       <Toolbar>
-        <Typography variant="h6" component="div">
-          خانه
-        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            width: "100%",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Typography variant="h5" component="h2">
+            خانه
+          </Typography>
+          <Typography
+            variant="caption"
+            component="time"
+            dateTime={currentDate.toISOString()}
+          >
+            {formatter.format(currentDate)}
+          </Typography>
+        </Box>
       </Toolbar>
       <Divider />
     </AppBar>
