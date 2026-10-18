@@ -11,6 +11,9 @@ import {
 import TopBar from "./TopBar/TopBar";
 import SideBar from "./SideBar/SideBar";
 import PageContainer from "./PageContainer/PageContainer";
+import TrainingsPage from "../screens/trainings-page/TrainingsPage";
+import HomePage from "../screens/home-page/HomePage";
+import SupplementsPage from "../screens/supplements-page/SupplementsPage";
 
 // interface MainLayoutProps {
 //   children?: ReactNode;
@@ -23,7 +26,9 @@ export default function MainLayout() {
       <CssBaseline />
       <TopBar drawerWidth={drawerWidth} currentDate={new Date("2026-06-16")} />
       <SideBar drawerWidth={drawerWidth} />
-      <PageContainer drawerWidth={drawerWidth}>test</PageContainer>
+      <PageContainer drawerWidth={drawerWidth}>
+        <SupplementsPage />
+      </PageContainer>
     </Box>
   );
 }
