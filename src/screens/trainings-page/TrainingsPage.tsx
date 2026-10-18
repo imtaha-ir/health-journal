@@ -1,9 +1,9 @@
 import { useState } from "react";
-import TrainingList from "../../components/training-list/TrainingList";
 import { getTrainings } from "../../services/training.service";
 import type { Training } from "../../types/training.type";
 import { Fab } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
+import TrainingList from "../../components/lists/TrainingList";
 
 export default function TrainingsPage() {
   const [trainings, setTrainings] = useState<Training[]>(getTrainings());
