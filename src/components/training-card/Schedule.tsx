@@ -46,6 +46,7 @@ export default function Schedule({ daysOfWeek, time }: ScheduleProps) {
         <Typography variant="caption">
           ساعت: {time ? time : "نامشخص"}
         </Typography>
+
         <AccessTime fontSize="small" />
       </Box>
     </Stack>
