@@ -4,7 +4,7 @@ import FitnessCenterOutlinedIcon from "@mui/icons-material/FitnessCenterOutlined
 import SelfImprovementOutlinedIcon from "@mui/icons-material/SelfImprovementOutlined";
 import DirectionsRunOutlinedIcon from "@mui/icons-material/DirectionsRunOutlined";
 import NotInterestedOutlinedIcon from "@mui/icons-material/NotInterestedOutlined";
-import Schedule from "./Schedule";
+import Schedule from "../schedule/Schedule";
 
 interface TrainingCardProps {
   training: Training;

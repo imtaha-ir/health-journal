@@ -3,7 +3,7 @@ import FitnessCenterOutlinedIcon from "@mui/icons-material/FitnessCenterOutlined
 import SelfImprovementOutlinedIcon from "@mui/icons-material/SelfImprovementOutlined";
 import DirectionsRunOutlinedIcon from "@mui/icons-material/DirectionsRunOutlined";
 import NotInterestedOutlinedIcon from "@mui/icons-material/NotInterestedOutlined";
-import Schedule from "../training-card/Schedule";
+import Schedule from "../schedule/Schedule";
 import type { Supplement } from "../../types/supplement.type";
 import { MedicationOutlined } from "@mui/icons-material";
 
