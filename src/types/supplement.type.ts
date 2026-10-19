@@ -3,5 +3,5 @@ export interface Supplement {
   name: string;
   dose_note: string;
   days_of_week: number[];
-  time: string;
+  time?: string;
 }

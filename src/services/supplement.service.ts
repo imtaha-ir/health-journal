@@ -45,6 +45,26 @@ export function getSupplements() {
       days_of_week: [],
       time: "23:59",
     },
+    {
+      id: 7,
+      name: "پروبیوتیک",
+      dose_note: "۱ عدد شب‌ها با معده خالی",
+      days_of_week: [0, 1, 2, 3, 4, 5, 6],
+    },
+    {
+      id: 8,
+      name: "تیروکسین",
+      dose_note: "",
+      days_of_week: [1, 1, 3, 5],
+      time: "12:00",
+    },
+    {
+      id: 9,
+      name: "",
+      dose_note: "۱ کپسول بعد از غذا",
+      days_of_week: [-1, 7],
+      time: "",
+    },
   ];
 
   return supplements;
