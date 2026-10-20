@@ -9,16 +9,22 @@ import {
   ListItemIcon,
   ListItemText,
   Stack,
-  Toolbar,
   Typography,
 } from "@mui/material";
 import menuItems from "../../constants/menuItems.const";
+import { useLocation, useNavigate } from "react-router";
 
 interface SideBarProps {
   drawerWidth: number;
 }
 
 export default function SideBar({ drawerWidth }: SideBarProps) {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const handleMenuClick = (path: string) => {
+    navigate(path);
+  };
+
   return (
     <Drawer
       sx={{
@@ -44,7 +50,12 @@ export default function SideBar({ drawerWidth }: SideBarProps) {
           <List sx={{ mt: 4 }}>
             {menuItems.map((item, index) => (
               <ListItem key={index} disablePadding>
-                <ListItemButton>
+                <ListItemButton
+                  onClick={() => {
+                    handleMenuClick(item.path);
+                  }}
+                  selected={location.pathname.startsWith(item.path)}
+                >
                   <ListItemIcon>
                     <item.icon />
                   </ListItemIcon>

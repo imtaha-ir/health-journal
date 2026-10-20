@@ -13,6 +13,7 @@ import SideBar from "./SideBar/SideBar";
 import PageContainer from "./PageContainer/PageContainer";
 import TrainingsPage from "../screens/trainings-page/TrainingsPage";
 import HomePage from "../screens/home-page/HomePage";
+import { Outlet } from "react-router";
 
 // interface MainLayoutProps {
 //   children?: ReactNode;
@@ -26,7 +27,7 @@ export default function MainLayout() {
       <TopBar drawerWidth={drawerWidth} currentDate={new Date("2026-06-16")} />
       <SideBar drawerWidth={drawerWidth} />
       <PageContainer drawerWidth={drawerWidth}>
-        <TrainingsPage />
+        <Outlet />
       </PageContainer>
     </Box>
   );

@@ -1,4 +1,6 @@
 import { AppBar, Box, Divider, Toolbar, Typography } from "@mui/material";
+import { useLocation } from "react-router";
+import menuItems from "../../constants/menuItems.const";
 
 interface TopBarProps {
   drawerWidth: number;
@@ -6,6 +8,10 @@ interface TopBarProps {
 }
 
 export default function TopBar({ drawerWidth, currentDate }: TopBarProps) {
+  const location = useLocation();
+  const menuItem = menuItems.find((item) => {
+    return location.pathname.startsWith(item.path);
+  });
   const formatter = new Intl.DateTimeFormat("fa-IR", {
     calendar: "persian",
     weekday: "long",
@@ -36,7 +42,7 @@ export default function TopBar({ drawerWidth, currentDate }: TopBarProps) {
           }}
         >
           <Typography variant="h5" component="h2">
-            خانه
+            {menuItem?.label ?? "پیدا نشد"}
           </Typography>
           <Typography
             variant="caption"

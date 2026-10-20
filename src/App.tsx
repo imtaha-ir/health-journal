@@ -4,6 +4,7 @@ import rtlPlugin from "stylis-plugin-rtl";
 import { createTheme, ThemeProvider } from "@mui/material";
 import { CacheProvider } from "@emotion/react";
 import MainLayout from "./layout/MainLayout";
+import AppRouter from "./AppRouter";
 
 const rtlCache = createCache({
   key: "muirtl",
@@ -19,7 +20,7 @@ function App() {
   return (
     <CacheProvider value={rtlCache}>
       <ThemeProvider theme={theme}>
-        <MainLayout />
+        <AppRouter />
       </ThemeProvider>
     </CacheProvider>
   );

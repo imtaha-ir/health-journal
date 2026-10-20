@@ -17,6 +17,7 @@
     "@mui/material": "^9.4.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
+    "react-router": "^8.5.0",
     "stylis": "^4.4.0",
     "stylis-plugin-rtl": "^2.1.1"
   },
