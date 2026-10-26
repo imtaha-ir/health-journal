@@ -1,6 +1,6 @@
 import type { Training } from "../types/training.type";
 
-export function getTrainings() {
+export async function getTrainings(): Promise<Training[]> {
   const trainings: Training[] = [
     {
       id: 1,
@@ -58,5 +58,9 @@ export function getTrainings() {
     },
   ];
 
-  return trainings;
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(trainings);
+    }, 3000);
+  });
 }
