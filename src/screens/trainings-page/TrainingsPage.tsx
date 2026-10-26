@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getTrainings } from "../../services/training.service";
 import type { Training } from "../../types/training.type";
-import { Fab, Tab, Tabs } from "@mui/material";
+import { Alert, Fab, Tab, Tabs } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import TrainingList from "../../components/lists/TrainingList";
 import { useParams } from "react-router";
@@ -12,6 +12,7 @@ export default function TrainingsPage() {
   const { day } = useParams();
   const [trainings, setTrainings] = useState<Training[]>([]);
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const onAddHandler = () => {
     // TODO: Add a training
     console.log("Add Clicked");
@@ -28,6 +29,9 @@ export default function TrainingsPage() {
     getTrainings()
       .then((data) => {
         setTrainings(filterTrainingsByDay(data));
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
       })
       .finally(() => {
         setLoading(false);
@@ -57,6 +61,11 @@ export default function TrainingsPage() {
           />
         ))}
       </Tabs>
+      {errorMessage && (
+        <Alert variant="outlined" color="error">
+          {errorMessage}
+        </Alert>
+      )}
       <TrainingList trainings={trainings} />
       <Fab
         color="primary"
