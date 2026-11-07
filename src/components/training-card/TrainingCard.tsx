@@ -4,6 +4,8 @@ import FitnessCenterOutlinedIcon from "@mui/icons-material/FitnessCenterOutlined
 import SelfImprovementOutlinedIcon from "@mui/icons-material/SelfImprovementOutlined";
 import DirectionsRunOutlinedIcon from "@mui/icons-material/DirectionsRunOutlined";
 import NotInterestedOutlinedIcon from "@mui/icons-material/NotInterestedOutlined";
+import SportsGymnasticsIcon from "@mui/icons-material/SportsGymnastics";
+import SportsScoreIcon from "@mui/icons-material/SportsScore";
 import Schedule from "../schedule/Schedule";
 
 interface TrainingCardProps {
@@ -18,7 +20,12 @@ export default function TrainingCard({ training }: TrainingCardProps) {
       case "cardio":
         return <DirectionsRunOutlinedIcon fontSize="large" />;
       case "meditation":
+      case "mindfulness":
         return <SelfImprovementOutlinedIcon fontSize="large" />;
+      case "flexibility":
+        return <SportsGymnasticsIcon fontSize="large" />;
+      case "other":
+        return <SportsScoreIcon fontSize="large" />;
       default:
         return <NotInterestedOutlinedIcon fontSize="large" />;
     }
