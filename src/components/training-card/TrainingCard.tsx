@@ -1,41 +1,18 @@
 import { Box, Card, CardContent, Stack, Typography } from "@mui/material";
 import type { Training } from "../../types/training.type";
-import FitnessCenterOutlinedIcon from "@mui/icons-material/FitnessCenterOutlined";
-import SelfImprovementOutlinedIcon from "@mui/icons-material/SelfImprovementOutlined";
-import DirectionsRunOutlinedIcon from "@mui/icons-material/DirectionsRunOutlined";
-import NotInterestedOutlinedIcon from "@mui/icons-material/NotInterestedOutlined";
-import SportsGymnasticsIcon from "@mui/icons-material/SportsGymnastics";
-import SportsScoreIcon from "@mui/icons-material/SportsScore";
 import Schedule from "../schedule/Schedule";
+import { getTrainingIcon } from "../../utils/icon.utils";
 
 interface TrainingCardProps {
   training: Training;
 }
 
 export default function TrainingCard({ training }: TrainingCardProps) {
-  const getTrainingIcon = () => {
-    switch (training.type) {
-      case "strength":
-        return <FitnessCenterOutlinedIcon fontSize="large" />;
-      case "cardio":
-        return <DirectionsRunOutlinedIcon fontSize="large" />;
-      case "meditation":
-      case "mindfulness":
-        return <SelfImprovementOutlinedIcon fontSize="large" />;
-      case "flexibility":
-        return <SportsGymnasticsIcon fontSize="large" />;
-      case "other":
-        return <SportsScoreIcon fontSize="large" />;
-      default:
-        return <NotInterestedOutlinedIcon fontSize="large" />;
-    }
-  };
-
   return (
     <Card>
       <CardContent>
         <Box sx={{ display: "flex", flexDirection: "row", gap: 2 }}>
-          <Box>{getTrainingIcon()}</Box>
+          <Box>{getTrainingIcon(training)}</Box>
           <Box>
             <Typography variant="h5" component="h3">
               <Typography
