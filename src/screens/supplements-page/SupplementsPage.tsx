@@ -7,10 +7,12 @@ import SupplementList from "../../components/lists/SupplementList";
 import { useParams } from "react-router";
 import ROUTE from "../../constants/route.const";
 import LoadingState from "../../components/loading-state/LoadingState";
+import { useData } from "../../contexts/DataContext";
 
 export default function SupplementsPage() {
   const { day } = useParams();
   const [supplements, setSupplements] = useState<Supplement[]>([]);
+  const appData = useData();
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -27,18 +29,9 @@ export default function SupplementsPage() {
   };
 
   useEffect(() => {
-    setLoading(true);
-    getSupplements()
-      .then((data) => {
-        setSupplements(filterSupplementsbyDay(data));
-      })
-      .catch((error) => {
-        setErrorMessage(error.message);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
+    setSupplements(filterSupplementsbyDay(appData.supplements));
+    setLoading(appData.supplementLoading ?? false);
+  }, [appData]);
 
   if (loading) {
     return <LoadingState />;

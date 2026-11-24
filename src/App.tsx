@@ -5,6 +5,8 @@ import { createTheme, ThemeProvider } from "@mui/material";
 import { CacheProvider } from "@emotion/react";
 import MainLayout from "./layout/MainLayout";
 import AppRouter from "./AppRouter";
+import { NotificationsProvider } from "./contexts/NotificationsContext";
+import { DataProvider } from "./contexts/DataContext";
 
 const rtlCache = createCache({
   key: "muirtl",
@@ -20,7 +22,11 @@ function App() {
   return (
     <CacheProvider value={rtlCache}>
       <ThemeProvider theme={theme}>
-        <AppRouter />
+        <NotificationsProvider>
+          <DataProvider>
+            <AppRouter />
+          </DataProvider>
+        </NotificationsProvider>
       </ThemeProvider>
     </CacheProvider>
   );

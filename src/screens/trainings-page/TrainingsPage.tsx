@@ -7,12 +7,15 @@ import TrainingList from "../../components/lists/TrainingList";
 import { useParams } from "react-router";
 import ROUTE from "../../constants/route.const";
 import LoadingState from "../../components/loading-state/LoadingState";
+import { useNotifications } from "../../contexts/NotificationsContext";
+import { useData } from "../../contexts/DataContext";
 
 export default function TrainingsPage() {
   const { day } = useParams();
+  const appData = useData();
   const [trainings, setTrainings] = useState<Training[]>([]);
   const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
   const onAddHandler = () => {
     // TODO: Add a training
     console.log("Add Clicked");
@@ -25,18 +28,8 @@ export default function TrainingsPage() {
   };
 
   useEffect(() => {
-    setLoading(true);
-    getTrainings()
-      .then((data) => {
-        setTrainings(filterTrainingsByDay(data));
-      })
-      .catch((error) => {
-        setErrorMessage(error.message);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
+    setTrainings(filterTrainingsByDay(appData.trainings));
+  }, [appData]);
 
   if (loading) {
     return <LoadingState />;
@@ -61,11 +54,7 @@ export default function TrainingsPage() {
           />
         ))}
       </Tabs>
-      {errorMessage && (
-        <Alert variant="outlined" color="error">
-          {errorMessage}
-        </Alert>
-      )}
+
       <TrainingList trainings={trainings} />
       <Fab
         color="primary"

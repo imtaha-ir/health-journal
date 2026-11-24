@@ -14,6 +14,7 @@ import PageContainer from "./PageContainer/PageContainer";
 import TrainingsPage from "../screens/trainings-page/TrainingsPage";
 import HomePage from "../screens/home-page/HomePage";
 import { Outlet } from "react-router";
+import NotificationStack from "./NotificationStack/NotificationStack";
 
 // interface MainLayoutProps {
 //   children?: ReactNode;
@@ -26,6 +27,7 @@ export default function MainLayout() {
       <CssBaseline />
       <TopBar drawerWidth={drawerWidth} currentDate={new Date("2026-06-16")} />
       <SideBar drawerWidth={drawerWidth} />
+      <NotificationStack />
       <PageContainer drawerWidth={drawerWidth}>
         <Outlet />
       </PageContainer>
